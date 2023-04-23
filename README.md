@@ -5,13 +5,14 @@ This repository is dedicated to Domain-driven Design (DDD), which is a software 
 ## Domain
 
 - Domain Experts
-- Conversation
-- Ubiquitous Language
+  - Conversation
+  - Ubiquitous Language
 - Users
-- Client
-- Supplier
-- Attendant
-- Bartender
+  - Client
+  - Supplier
+  - Attendant
+  - Bartender
+
 - Aggregates
 - Value Objects
 - Domain Events
