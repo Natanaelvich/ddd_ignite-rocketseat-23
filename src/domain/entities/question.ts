@@ -1,28 +1,23 @@
-
+import { Entity } from "../../core/entities/entity";
+import { UniqueEntityID } from "../../core/entities/unique-entity-id";
 
 interface QuestionProps {
-  authorId: string
-  title: string
-  content: string
+  authorId: UniqueEntityID;
+  title: string;
+  content: string;
+  slug: Slug;
 }
 
-export class Question {
+export class Question extends Entity<QuestionProps> {
 
-    private constructor(
-        private props: QuestionProps,
-        private id?: string
-    ) {}
+  static create(props: QuestionProps, id?: UniqueEntityID) {
+    const question = new Question(
+      {
+        ...props,
+      },
+      id
+    );
 
-
-
-  static create(
-    props: QuestionProps,
-    id?: string
-  ) {
-    const question = new Question({
-      ...props,
-    }, id)
-
-    return question
+    return question;
   }
 }
