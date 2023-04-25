@@ -1,5 +1,6 @@
 import { Entity } from "../../core/entities/entity";
 import { UniqueEntityID } from "../../core/entities/unique-entity-id";
+import { Slug } from "./value-objects/slug";
 
 interface QuestionProps {
   authorId: UniqueEntityID;
@@ -14,6 +15,7 @@ export class Question extends Entity<QuestionProps> {
     const question = new Question(
       {
         ...props,
+        slug: props.slug ?? Slug.createFromText(props.title),
       },
       id
     );
