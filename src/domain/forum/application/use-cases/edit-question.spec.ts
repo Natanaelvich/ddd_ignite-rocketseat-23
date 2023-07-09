@@ -17,8 +17,6 @@ describe('Edit Question', () => {
     inMemoryQuestionsRepository = new InMemoryQuestionsRepository(
       inMemoryQuestionAttachmentsRepository,
     )
-    inMemoryQuestionAttachmentsRepository =
-      new InMemoryQuestionAttachmentsRepository()
     sut = new EditQuestionUseCase(
       inMemoryQuestionsRepository,
       inMemoryQuestionAttachmentsRepository,
@@ -58,17 +56,16 @@ describe('Edit Question', () => {
       title: 'Pergunta teste',
       content: 'Conteúdo teste',
     })
-  })
-
-  expect(
-    inMemoryQuestionsRepository.items[0].attachments.currentItems,
-  ).toHaveLength(2)
-  expect(inMemoryQuestionsRepository.items[0].attachments.currentItems).toEqual(
-    [
+    expect(
+      inMemoryQuestionsRepository.items[0].attachments.currentItems,
+    ).toHaveLength(2)
+    expect(
+      inMemoryQuestionsRepository.items[0].attachments.currentItems,
+    ).toEqual([
       expect.objectContaining({ attachmentId: new UniqueEntityID('1') }),
-      expect.objectContaining({ attachmentId: new UniqueEntityID('3') }),
-    ],
-  )
+      expect.objectContaining({ attachmentId: new UniqueEntityID('2') }),
+    ])
+  })
 
   it('should not be able to edit a question from another user', async () => {
     const newQuestion = makeQuestion(
